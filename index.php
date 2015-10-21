@@ -53,7 +53,7 @@ public static $head_tomb=array();//js,css,ogg stb
 public static $app_tomb=array();
 public static $tool_tomb=array();	
 }
-echo Lap::$html;
+echo Lap::$html.'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh';
 //echo $file ;
 
 //ob_end_flush();
