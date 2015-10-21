@@ -45,7 +45,7 @@
             </div>
         </div>
     </header><!--/header-->
-                ||tartalom||
+                ||slide||
     <section id="bottom" class="wet-asphalt ">
 
           <!--  <div class="row">

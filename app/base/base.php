@@ -1,0 +1,1 @@
+<?php$fget='home';if(!empty($_GET['fget'])){=$_GET['fget'];}include_once 'app/base/'.$fget.'.php';?>
