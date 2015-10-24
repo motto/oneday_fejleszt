@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="PublishConfigData" uploadOnCheckin="9350d62b-eb63-4f34-b037-cc95d0a34a26">
+    <serverData>
+      <paths name="oneday_fejleszt">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
     <option name="myUploadOnCheckinName" value="oneday_fejleszt" />
   </component>
 </project>
