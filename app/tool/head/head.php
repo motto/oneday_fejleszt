@@ -2,7 +2,7 @@
 class Head {
 //---ghg
 static public function view($head_tomb=array()){
-  if(empty($head_tomb)){$head_tomb=Lap::$head_tomb}
+  if(empty($head_tomb)){$head_tomb=Lap::$head_tomb;}
 foreach( $head_tomb as $key=>$value_tomb){
     switch ($key) {
         case 'js_file':
