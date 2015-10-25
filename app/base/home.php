@@ -2,9 +2,10 @@
 class Home{
 //static  public $data=array();
 public static function view(){
-   $data['slide']=Tool_S::view('Slide');
-$view = file_get_contents('tmpl/'.GOB::$tmpl.'/home.html', true);
-$html = str_replace('||slide||', $data['slide'], $view);
+$html = file_get_contents('tmpl/'.GOB::$tmpl.'/alap.html', true);
+$html = str_replace('<!--|head|-->',Tool_S::view('Head') ,$html);
+$html = str_replace('<!--|header|-->',Tool_S::view('Header') ,$html);
+$html = str_replace('<!--|tartalom|-->',Tool_S::view('Slide') ,$html);
 return $html;
 }
 }
