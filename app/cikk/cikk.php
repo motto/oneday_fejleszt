@@ -4,10 +4,12 @@ class Cikk{
     public static function view(){
         $id=$_GET['id'];
         $query="SELECT cim,kep,text FROM cikk WHERE id='".$id."'";
-        $data_tomb=DB::assoc_tomb($query);
-        $tartalom=file_get_contents('tmpl/'.GOB::$tmpl.'/cik.html', true);
-        foreach($data_tom as $key=>$value){
-            $tartalom== str_replace('<!--|'.$key.'|-->',$value ,$tartalom);
+        $data_tomb=DB::assoc_sor($query);
+       // print_r($data_tomb);
+        $tartalom=file_get_contents('tmpl/'.GOB::$tmpl.'/cikk.html', true);
+        foreach ($data_tomb as $key=>$value){
+
+            $tartalom= str_replace('<!--|'.$key.'|-->',$value ,$tartalom);
         }
 
         $html = file_get_contents('tmpl/'.GOB::$tmpl.'/alap.html', true);
