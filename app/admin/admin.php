@@ -16,8 +16,11 @@ else{
                     $tartalom= Tool_S::view('new');
                     break;
                 default:
-                    $param['data']=$data;
-                    $param['html']=file_get_contents('app/admin/view/club.html', true);
+                    //$param['data']=array('cim'=>'sghfhfdhfdhfg','intro'=>'gh  ffghfhfhfhfgh  fghfdhfdh fd ');
+                    $query="SELECT * FROM scroll WHERE pub='1' ";
+                    $param['data_tomb']=DB::assoc_tomb($query);
+
+                    $param['html']=file_get_contents('app/club/view/item.html', true);
                     $tartalom= Tool_S::view('lista',$param);
             }
             $html = file_get_contents('app/admin/view/club.html', true);
