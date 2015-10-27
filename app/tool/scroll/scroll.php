@@ -12,8 +12,9 @@ public static function view($Param=array()){
            $elem= str_replace('<!--|szin|-->',$item['szin'],$elem);
            $elem = str_replace('<!--|cim|-->',$item['cim'],$elem);
            $elem = str_replace('<!--|intro|-->',$item['intro'],$elem);
+           $elem='<li>'.$elem.'</li>';
            $html =$html.$elem;
-           $html ='<li>'.$html.'</li>'
+
              }
      }
     $html = $html.'</ul>' ;
