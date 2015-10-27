@@ -1520,7 +1520,7 @@ class PHPMailerLite {
   }
 
   /**
-   * Adds a string or binary attachment (non-filesystem) to the list.
+   * Adds a string or binary attachment (non-filesystem) to the lista.
    * This method can be used to attach ascii or binary data,
    * such as a BLOB record from a database.
    * @param string $string String attachment data.

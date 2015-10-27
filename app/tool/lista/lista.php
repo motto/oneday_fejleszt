@@ -1,5 +1,5 @@
 <?php
-class List {
+class Lista {
 //---ghg
     static public function view($param=array()){
 

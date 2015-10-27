@@ -18,7 +18,7 @@ else{
                 default:
                     $param['data']=$data;
                     $param['html']=file_get_contents('app/admin/view/club.html', true);
-                    $tartalom= Tool_S::view('list',$param);
+                    $tartalom= Tool_S::view('lista',$param);
             }
             $html = file_get_contents('app/admin/view/club.html', true);
             $html = str_replace('<!--|tartalom|-->',$tartalom ,$html);
