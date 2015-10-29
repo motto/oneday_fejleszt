@@ -6,51 +6,83 @@ Link::kiszed(link,'task,id'); //ha a linkben nincs kérdőjel mögé tesz egy ?g
 Link::src_thumb($src)  //képnév elé illeszti a thumb/ -ot
 */
 
-//listázó megjelenítő osztály
+class Gyarthato
+{
+	public $param =array();
+	function __construct($Param=array()){
 
-class SView{
-static  function item($adatok,$view){
-		$view2=$view;
-		foreach ($adatok as $adatnev=>$adat){
+	}
 
-			$view2= str_replace('-|-'.$adatnev.'-|-',$adat,$view2 );
-		}
-	return $view2;
+	function view($html,$data,$Param=array())
+	{
+
+		return $view;
+	}
 }
+class S{
 
-	static  function lista($tomb,$view){
-		$lista='';
-		foreach ($tomb as $adatok){
-		$view2=SView::item($adatok,$view);
-			$lista=$lista.$view2;
-		}
-		return $lista;
+	static	function Obj($osztaly_nev,$param=array()){
+		//$$osztaly=new $osztaly_nev;
+		$osztaly=new $osztaly_nev;
+		self::parmeterez($osztaly,$param);
+		return $osztaly;
+	}
+
+	static	function parmeterez($osztaly,$param)
+	{
+		//foreach($param as $kulcs => $ertek){$$osztaly->$kulcs=$ertek;}
+		foreach($param as $kulcs => $ertek){$osztaly->$kulcs=$ertek;}
+	}
+
+	static	function view($osztaly_nev,$param)
+	{
+		$oszt=self::Obj($osztaly_nev,$param);
+		$html=$oszt->view();
+		return $html;
 	}
 
 }
 
 
-//tömbkezelő függvények-------------------------------------------------
 function session_post_get($adatnev,$ertek){
 	if($_SESSION[$adatnev]!=null){$ertek=$_SESSION[$adatnev];}
 	if($_POST[$adatnev]!=null){$ertek=$_POST[$adatnev];}
 	if($_GET[$adatnev]!=null){$ertek=$_GET[$adatnev];}
 return $ertek;
 }
-class Tomb {
-function char_to_assoc($string,$tagolo1=',',$tagolo2=':')
+class STR
 {
+	static public function to_tomb($string, $tagolo1 = ',', $tagolo2 = ':')
+	{
 //pl.:$string='class:hhh,id:azon,name:név'
-$tx1=explode($tagolo1,$string);
-foreach($tx1 as $mezo){
-$tx2=explode($tagolo2,$mezo);
-$tomb[$tx2[0]]=$tx2[1];
+		$tx1 = explode($tagolo1, $string);
+		foreach ($tx1 as $mezo) {
+			$tx2 = explode($tagolo2, $mezo);
+			$tomb[$tx2[0]] = $tx2[1];
+		}
+		return $tomb;
+	}
+
+static public function webnev($string,$hosz=20)
+	{ $hungarianABC = array( 'á','é','í','ó','ö','ő','ú','ü','ű','Á','É','Í','Ó','Ö','Ő','Ú','Ü','Ű','&','#','@','$','%','/','\\');
+		$englishABC = array( 'a','e','i','o','o','o','u','u','u','A','E','I','O','O','O','U','U','U','e','e','e','e','e','e','e');
+		$string=str_replace($hungarianABC, $englishABC, $string);
+		$webabc = array( 'a','e','i','o','u','b','c','d','f','g','h','j','k','l','m','n','p','_','q','r','s','z','v','w','x','y','t','0','1','2','3','4','5','6','7','8','9');
+		$string = strtolower( $string);
+		for ($n = 0; $n < strlen($string); ++$n)
+		{if($n<$hosz){if (in_array($string{$n},$webabc)){$webnev=$webnev.$string{$n};}}}
+		return $webnev;
+	}
 }
-return $tomb;
+class TOMB {
+static public function to_string($tomb){
+foreach($tomb as $key=>$value){
+if(is_array($value)){self::to_string($value);}else{$str=$str. $key.': '.$value.'\n </br>';}}
+	return $str;
 }
-function kiir($tomb){
-foreach($tomb as $elem){
-if(is_array($elem)){self::kiir($elem);}else{echo $elem."\n </br>";}}
+static public function kiir($tomb){
+	foreach($tomb as $key=>$value){
+		if(is_array($value)){self::kiir($value);}else{echo $key.': '.$value.'\n </br>';}}
 }
 }
 
@@ -70,27 +102,11 @@ if($fugveny=''){return $$osztaly;}else{return $$osztaly->$fugveny();}
 
 }
 
-//karakter láncok kezelélse---------------------------------------------------
 
-class Karatkter {
-
-function webnev_fuggveny($string,$hosz=20)
-{ $hungarianABC = array( 'á','é','í','ó','ö','ő','ú','ü','ű','Á','É','Í','Ó','Ö','Ő','Ú','Ü','Ű','&','#','@','$','%','/','\\');
- $englishABC = array( 'a','e','i','o','o','o','u','u','u','A','E','I','O','O','O','U','U','U','e','e','e','e','e','e','e');
-$string=str_replace($hungarianABC, $englishABC, $string);
-$webabc = array( 'a','e','i','o','u','b','c','d','f','g','h','j','k','l','m','n','p','_','q','r','s','z','v','w','x','y','t','0','1','2','3','4','5','6','7','8','9');
-$string = strtolower( $string);
-$string=str_replace(' ', '_', $string);$string=str_replace('-', '_', $string);$string=str_replace(',', '_', $string);$string=str_replace('+', '_', $string); $string=str_replace('___', '_', $string);$string=str_replace('__', '_', $string);
-  for ($n = 0; $n < strlen($string); ++$n)
-  {if($n<$hosz){if (in_array($string{$n},$webabc)){$webnev=$webnev.$string{$n};}}}
-	  return $webnev;
-}
-
-}
 //link kezelő-------------------------------------
-class Link {
+class LINK {
 // a kép neve elé teszi a /thumb-ot (thumb elérési útját állítja elő
-function src_thumb($src)
+static public function thumb_src($src)
 { 
 ///$path_parts = pathinfo('/www/htdocs/inc/lib.inc.php');
  //$path_parts['dirname'] /www/htdocs/inc
@@ -102,8 +118,8 @@ function src_thumb($src)
  return  $ujsrc;
 }
 
-	
-function kiszed($link,$kiszed1)
+
+static public function kiszed($link,$kiszed1)
 {
 if(is_array($kiszed1)){$kiszed=$kiszed1;}else{$kiszed=explode(',',$kiszed1);}
 $linktomb1=explode('?',$link);
@@ -126,7 +142,8 @@ $link2=$linktomb1[0].$get_resz;
 
 return $link2; 
 }
-function get_cserel($link,$cserel)
+
+static public function get_cserel($link,$cserel)
 {
 //$cserel pl.: $cserel='task=ment&id=1'
 
@@ -139,8 +156,12 @@ if (strpos($link,'?') === false){$link2=$link2.'?'.$cserel;}else{$link2=$link2.'
 return $link2; 
 }
 
+
+
+
+
 }
-class Hiba {	
+class HIBA {
 function tombbe($tip,$hiba)
 {
 global $hiba;
