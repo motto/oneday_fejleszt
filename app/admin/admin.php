@@ -13,15 +13,17 @@ else{
                     $tartalom=' edit';
                     break;
                 case 'new':
-                    $tartalom= Tool_S::view('new');
+                    //$tartalom= Tool_S::view('new');
                     break;
                 default:
                     //$param['data']=array('cim'=>'sghfhfdhfdhfg','intro'=>'gh  ffghfhfhfhfgh  fghfdhfdh fd ');
                     $query="SELECT * FROM scroll WHERE pub='1' ";
-                    $param['data_tomb']=DB::assoc_tomb($query);
-
-                    $param['html']=file_get_contents('app/club/view/item.html', true);
-                    $tartalom= Tool_S::view('lista',$param);
+                    $data_tomb=DB::assoc_tomb($query);
+                        $html_tomb['0']='<img src="images/'.$item['kep'].'.png" >';
+                    $html_tomb['1']=file_get_contents('app/club/view/item.html', true);
+                    include 'app/tool/lista/lista.php';
+                    //$tartalom= Tool_S::view('lista',$param);
+                    $tartalom= LISTA::multi_view($html_tomb,$data_tomb,'szerk');
             }
             $html = file_get_contents('app/admin/view/club.html', true);
             $html = str_replace('<!--|tartalom|-->',$tartalom ,$html);

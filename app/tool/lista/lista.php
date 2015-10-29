@@ -1,14 +1,18 @@
 <?php
-class Lista {
+class LISTA {
 //---ghg
-    static public function view($param=array()){
+    static public function view($html,$data_tomb){
 
 
-        foreach ($param['data_tomb'] as $data){
-            $param2['data']=$data;
-            $param2['html']= $param['html'];
-            $html=$html.Tool_S::view('item',$param2);
+        foreach ($data_tomb as $data){
+            $html=$html.Tool_S::view($html,$data);
         }
+        return $html;
+    }
+    static public function multi_view($html_tomb,$data_tomb,$tip_mezo='tip'){
+
+        $html1=$html_tomb[$data_tomb[$tip_mezo]];
+        $html= self::view($html1,$data_tomb);
         return $html;
     }
 }
