@@ -1,7 +1,7 @@
 <?php
-class Fomenu {
+class Fomenu extends Gyarthato {
 //---ghg
-static public function view($Param=array())
+ public function result($Param=array())
 {   $query="SELECT * FROM menu WHERE menu='fomenu'";
     $fomenu_tomb=DB::assoc_tomb($query);
     /*
@@ -18,7 +18,14 @@ foreach ($fomenu_tomb as $menu) {
 
 
     }
-    return $html;
+
+    $html2= file_get_contents('tmpl/'.GOB::$tmpl.'/tool/fomenu.html', true);
+    $html2= str_replace('<!--|menu|-->',$html, $html2);
+
+
+    return $html2;
+
+
 }
 
 }

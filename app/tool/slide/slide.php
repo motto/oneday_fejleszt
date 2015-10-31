@@ -1,7 +1,7 @@
 <?php
-class Slide {
-    //---ghg
-    static public function view($Param=array()){
+class Slide extends Gyarthato{
+
+public function result(){
 $imagepath='tmpl/oneday/images/slider/'; //bg2.jpg
 
 $slide_tomb[]=array('ONE DAY CLUB','Az ötcsillagos turisztikai szolgáltatás',$imagepath.'bg1.jpg','#');

@@ -8,37 +8,46 @@ Link::src_thumb($src)  //képnév elé illeszti a thumb/ -ot
 
 class Gyarthato
 {
-	public $param =array();
-	function __construct($Param=array()){
-
+	public $param;
+	public $futtat='result';
+	public $result;
+	function __construct($param)
+	{
+		$this->general($param);
 	}
 
-	function view($html,$data,$Param=array())
+	public function update($param=array())
+	{
+		if(!is_array($param)){$param=STR::to_tomb($param);}
+		foreach ($param as $key => $value) {
+			$this->$key =$value;
+		}
+	}
+
+	public function general($param)
+	{
+		$this->update($param);
+
+		$this->futtat();
+	}
+	public function result()
 	{
 
-		return $view;
 	}
 }
-class S{
+class GYART{
 
 	static	function Obj($osztaly_nev,$param=array()){
 		//$$osztaly=new $osztaly_nev;
 		$osztaly=new $osztaly_nev;
-		self::parmeterez($osztaly,$param);
 		return $osztaly;
 	}
 
-	static	function parmeterez($osztaly,$param)
-	{
-		//foreach($param as $kulcs => $ertek){$$osztaly->$kulcs=$ertek;}
-		foreach($param as $kulcs => $ertek){$osztaly->$kulcs=$ertek;}
-	}
-
-	static	function view($osztaly_nev,$param)
+	static	function result($osztaly_nev,$param=array())
 	{
 		$oszt=self::Obj($osztaly_nev,$param);
-		$html=$oszt->view();
-		return $html;
+		$result=$oszt->result;
+		return $result;
 	}
 
 }

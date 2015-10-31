@@ -19,7 +19,7 @@ else{
                     //$param['data']=array('cim'=>'sghfhfdhfdhfg','intro'=>'gh  ffghfhfhfhfgh  fghfdhfdh fd ');
                     $query="SELECT * FROM scroll WHERE pub='1' ";
                     $data_tomb=DB::assoc_tomb($query);
-                        $html_tomb['0']='<img src="images/'.$item['kep'].'.png" >';
+                        $html_tomb['0']='<img src="images/<!--|kep|-->.png" >';
                     $html_tomb['1']=file_get_contents('app/club/view/item.html', true);
                     include 'app/tool/lista/lista.php';
                     //$tartalom= Tool_S::view('lista',$param);

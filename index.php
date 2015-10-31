@@ -1,6 +1,5 @@
 <?php
 session_start();
-//ob_start();
 
 // GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}    új mappa és erre átnevezni
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -43,40 +42,21 @@ include_once ALTALANOS_FGV;
 
 //tartalom előállítás--------------------------------------
 
-//template becsatolás (alap,json stb) tartalom keret stb kiírás----------------
+class LAP{
+public static $html='';
+public static $head;//js,css,ogg stb
+public static $body;
+public static $tartalom;
+public static $tmpl='';
+}
+Lap::$tmpl=GOB::$tmpl;
+Lap::$head['html']=file_get_contents('tmpl/'.GOB::$tmpl.'tool/head.html', true);
+Lap::$body['html']=file_get_contents('tmpl/'.GOB::$tmpl.'base.html', true);
 GOB::$app=session_post_get('app',GOB::$app);
 include_once 'app/'.GOB::$app.'/'.GOB::$app.'.php';
 
-class Lap{
-public static $html='';
-public static $head_tomb=array();//js,css,ogg stb
-public static $app_tomb=array();
-public static $tool_tomb=array();	
-}
-echo Lap::$html;
-//echo $file ;
 
-//ob_end_flush();
-/*
-function szallas_bemutat(){
-	$view=file_get_contents('app/motto/view/szallasok2.html', true);
-	$view_tomb1=explode('view:stop',$motto_view);
-	foreach ($view_tomb1 as $view){
-		$tomb1=explode('view:body',$view);
-		$view_tomb[$tomb1[0]]=$tomb1[1];
-	}
-//print_r($view_tomb) ;
-	$query =  "SELECT sz.Af_nev,f.Foto_id,v.Af_varosNev FROM odc_szallas sz
-INNER JOIN  odc_fotok f ON (sz.Af_id=f.Fokep)
-INNER JOIN odc_varosok v ON (v.Af_varosID=sz.Af_telepules) WHERE sz.AF_aktiv='I' GROUP BY sz.Af_id ORDER BY RAND() LIMIT 0,4 ";
-	$tomb=DB::assoc_tomb($query);
-//print_r($tomb);
-	$szallasbemutat=SView::lista($tomb,$view);
-	return $szallasbemutat;
-}
-$szallasbemutat=szallas_bemutat();
+echo Lap::html;
 
-$szallasbemutat=szallas_bemutat();
-$lapkiir = str_replace('||lista||', $szallasbemutat,$lapkiir );*/
 ?>
 

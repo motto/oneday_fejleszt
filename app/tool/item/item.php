@@ -1,5 +1,18 @@
 <?php
-class ITEM {
+class ITEM extends Gyarthato
+{   public $html;
+    public $head=array();
+    public $body_head=array();
+    public function result()
+    {
+        foreach ($this->body_head as $key=>$value){
+            $html= str_replace('<!--|'.$key.'|-->',$value, $html);
+        }
+
+    }
+}
+
+class ItemS {
 //---ghg
     static public function view($html,$data){
     foreach ($data as $key=>$value){

@@ -1,8 +1,7 @@
 <?php
-class Head {
-//---ghg
-static public function view($head_tomb=array()){
-  if(empty($head_tomb)){$head_tomb=Lap::$head_tomb;}
+class Head extends  Gyarthato{
+public function result(){
+$head_tomb=Lap::$head_tomb;
 foreach( $head_tomb as $key=>$value_tomb){
     switch ($key) {
         case 'js_file':
@@ -36,6 +35,10 @@ foreach( $head_tomb as $key=>$value_tomb){
     }
 
     }
-return $html;
+    $html2= file_get_contents(L, true);
+    $html2= str_replace('<!--|head|-->',$html, $html2);
+    $html2= str_replace('<!--|title|-->',$html, $html2);
+
+return $html2;
 }
 }

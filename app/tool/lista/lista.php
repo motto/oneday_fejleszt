@@ -1,5 +1,5 @@
 <?php
-class LISTA {
+class Lista {
 //---ghg
     static public function view($html,$data_tomb){
 
