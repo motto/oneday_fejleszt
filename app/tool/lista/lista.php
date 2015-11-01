@@ -1,18 +1,27 @@
 <?php
-class Lista {
+class Lista_S {
 //---ghg
     static public function view($html,$data_tomb){
 
-
-        foreach ($data_tomb as $data){
-            $html=$html.Tool_S::view($html,$data);
+       foreach ($data_tomb as $data){
+            $html=$html.TOOL::item_s($html,$data);
         }
         return $html;
     }
-    static public function multi_view($html_tomb,$data_tomb,$tip_mezo='tip'){
+    static public function multi_view($html_tomb,$data_tomb){
 
-        $html1=$html_tomb[$data_tomb[$tip_mezo]];
-        $html= self::view($html1,$data_tomb);
+        foreach ($data_tomb as $data){
+         $html=$html_tomb[$data['tip']];
+         $html=$html.TOOL::item_s($html,$data);
+        }
+        return $html;
+    }
+    static public function tool($data_tomb){
+        $html='';
+        foreach ($data_tomb as $toolnev=>$param){
+
+            $html=$html.TOOL::$toolnev($param);
+        }
         return $html;
     }
 }
