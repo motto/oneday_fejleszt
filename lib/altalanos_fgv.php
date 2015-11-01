@@ -11,12 +11,12 @@ class Gyarthato
 	public $param;
 	public $futtat='result';
 	public $result;
-	function __construct($param=array())
+	function __construct($param='')
 	{
 		$this->general($param);
 	}
 
-	public function update($param=array())
+	public function update($param='')
 	{
 		if(!is_array($param)){$param=STR::to_tomb($param);}
 		foreach ($param as $key => $value) {
@@ -24,9 +24,10 @@ class Gyarthato
 		}
 	}
 
-	public function general($param=array())
+	public function general($param='')
 	{
-		$this->update($param);
+		if($param!=''){$this->update($param);}
+
 
 		//$futtat=$this->futtat;
 		//return $this->$futtat();
@@ -38,13 +39,13 @@ class Gyarthato
 }
 class GYART{
 
-	static	function Obj($osztaly_nev,$param=array()){
+	static	function Obj($osztaly_nev,$param=''){
 		//$$osztaly=new $osztaly_nev;
 		$osztaly=new $osztaly_nev($param);
 		return $osztaly;
 	}
 
-	static	function result($osztaly_nev,$param=array())
+	static	function result($osztaly_nev,$param='')
 	{
 		$oszt=self::Obj($osztaly_nev,$param);
 		$result=$oszt->result();

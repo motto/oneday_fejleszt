@@ -3,12 +3,12 @@
 
 class TOOL{
     static  public function item($param){
-        include_once 'app/tool/fomenu/item.php';
+        include_once 'app/tool/item/item.php';
         return GYART::result('Item',$param);
     }
     static  public function item_query($param){
-        include_once 'app/tool/fomenu/item.php';
-        return GYART::result('ItemQery',$param);
+        include_once 'app/tool/item/item.php';
+        return GYART::result('ItemQuery',$param);
     }
 static  public function fomenu(){
         include_once 'app/tool/fomenu/fomenu.php';

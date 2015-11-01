@@ -8,7 +8,7 @@ class Item extends Gyarthato
         foreach ($this->data as $key=>$value){
             $html= str_replace('<!--|'.$key.'|-->',$value, $html);
         }
-    return $html
+    return $html;
     }
 }
 class ItemQuery extends Gyarthato
@@ -21,38 +21,41 @@ class ItemQuery extends Gyarthato
         foreach ($data as $key=>$value){
             $html= str_replace('<!--|'.$key.'|-->',$value, $html);
         }
-
+        return $html;
     }
 }
 class ITEM_S {
-//---ghg
+//adatokkal tölt fel egy html-t pl: a <!--|tartalom|--> elemet kicseréli $data['tartalom']-al
     static public function view($html,$data){
     foreach ($data as $key=>$value){
         $html= str_replace('<!--|'.$key.'|-->',$value, $html);
     }
     return $html;
 }
-    static public function append($html,$append)
+//A $html <!--tartalom--> elemét kicseréli az  $append elemre
+    static public function into($html,$append)
     {
         $html= str_replace('|tartalom|', $html,$append);
         return $html;
     }
-
-        static public function view_append($html,$data,$append){
-        $html= self::append($html,$append);
+// into-t adatokkal tölt fel
+        static public function view_into($html,$data,$append){
+        $html= self::into($html,$append);
         $html= self::view($html,$data);
             return $html;
     }
+    //a $html_tomb -ben lévő hteml elemeket egymásba helyezi az első <!--tartalom--> elemét kicseréli a másodikra a második <!--tartalom--> elemét aharmadikra stb..
     static public function dom($html_tomb){
+        $html='';
         foreach ( $html_tomb  as $tomb){
-            $html= self::append($html,$tomb);
+            $html= self::into($html,$tomb);
         }
         return $html;
     }
-
+// dom -ot állít elő és  adatokkal töl fel
     static public function view_dom($html_tomb,$data){
 
-        $html= self::dom($html_tomb,$append);
+        $html= self::dom($html_tomb);
         $html= self::view($html,$data);
         return $html;
     }
