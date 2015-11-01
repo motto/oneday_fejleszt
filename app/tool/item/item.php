@@ -1,18 +1,30 @@
 <?php
-class ITEM extends Gyarthato
+class Item extends Gyarthato
 {   public $html;
-    public $head=array();
-    public $body_head=array();
+    public $data;
     public function result()
     {
-        foreach ($this->body_head as $key=>$value){
+     $html=$this->html;
+        foreach ($this->data as $key=>$value){
+            $html= str_replace('<!--|'.$key.'|-->',$value, $html);
+        }
+    return $html
+    }
+}
+class ItemQuery extends Gyarthato
+{   public $html;
+    public $query;
+    public function result()
+    {
+        $html=$this->html;
+        $data=DB::assoc_sor($this->query);
+        foreach ($data as $key=>$value){
             $html= str_replace('<!--|'.$key.'|-->',$value, $html);
         }
 
     }
 }
-
-class ItemS {
+class ITEM_S {
 //---ghg
     static public function view($html,$data){
     foreach ($data as $key=>$value){

@@ -6,6 +6,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 include_once 'definial.php';
 include_once 'lib/lang.php';
+include_once 'app/tool/tool.php';
 if(MoConfig::$offline=='igen'){ //offline módban kikapcsolja a weblapot
 				if($jogok_gt['stat']!='admin'){die(MoConfig::$offline_message);
 				return false;
@@ -16,6 +17,7 @@ if(MoConfig::$offline=='igen'){ //offline módban kikapcsolja a weblapot
 class GOB {
 	//public static $tmpl=Array('alap'=>'alap'); //alap template
 	public static $tmpl='oneday';
+	public static $title='Oneday club';
 	public static $app='home';
 	public static $tartalom;
 	protected static $user=Array();
@@ -49,14 +51,15 @@ public static $body;
 public static $tartalom;
 public static $tmpl='';
 }
-Lap::$tmpl=GOB::$tmpl;
-Lap::$head['html']=file_get_contents('tmpl/'.GOB::$tmpl.'tool/head.html', true);
-Lap::$body['html']=file_get_contents('tmpl/'.GOB::$tmpl.'base.html', true);
+
+LAP::$tmpl=GOB::$tmpl;
+LAP::$head['html']=file_get_contents('tmpl/'.GOB::$tmpl.'/tool/head.html', true);
+LAP::$body['html']=file_get_contents('tmpl/'.GOB::$tmpl.'/base.html', true);
 GOB::$app=session_post_get('app',GOB::$app);
 include_once 'app/'.GOB::$app.'/'.GOB::$app.'.php';
 
 
-echo Lap::html;
+echo LAP::$html;
 
 ?>
 
