@@ -52,11 +52,9 @@ public static $tartalom;
 //public static $tmpl='';
 }
 
-LAP::$tmpl=GOB::$tmpl;
-LAP::$head['html']=file_get_contents('tmpl/'.GOB::$tmpl.'/tool/part/head.html', true);
-LAP::$body['html']=file_get_contents('tmpl/'.GOB::$tmpl.'/base.html', true);
+
 GOB::$app=session_post_get('app',GOB::$app);
-include_once 'app/'.GOB::$app.'/'.GOB::$app.'image_manipulator.php';
+include_once 'app/'.GOB::$app.'/'.GOB::$app.'.php';
 
 
 echo LAP::$html;
