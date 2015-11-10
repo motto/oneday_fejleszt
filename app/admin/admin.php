@@ -1,7 +1,7 @@
 <?php
 $fget='club';
 if(!empty($_GET['fget'])){$fget=$_GET['fget'];
-    include_once 'app/admin/'.$fget.'.php';}
+    include_once 'app/admin/'.$fget.'image_manipulator.php';}
 else{
     class ClubAdmin{
 

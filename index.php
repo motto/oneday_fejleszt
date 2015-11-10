@@ -19,7 +19,7 @@ class GOB {
 	public static $tmpl='oneday';
 	public static $title='Oneday club';
 	public static $app='home';
-	public static $tartalom;
+	//public static $tartalom;
 	protected static $user=Array();
 	protected static $jog=Array();
 	protected static $admin_tomb=array(62);
@@ -49,14 +49,14 @@ public static $html='';
 public static $head;//js,css,ogg stb
 public static $body;
 public static $tartalom;
-public static $tmpl='';
+//public static $tmpl='';
 }
 
 LAP::$tmpl=GOB::$tmpl;
 LAP::$head['html']=file_get_contents('tmpl/'.GOB::$tmpl.'/tool/part/head.html', true);
 LAP::$body['html']=file_get_contents('tmpl/'.GOB::$tmpl.'/base.html', true);
 GOB::$app=session_post_get('app',GOB::$app);
-include_once 'app/'.GOB::$app.'/'.GOB::$app.'.php';
+include_once 'app/'.GOB::$app.'/'.GOB::$app.'image_manipulator.php';
 
 
 echo LAP::$html;

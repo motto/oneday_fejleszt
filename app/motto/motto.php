@@ -1,1 +1,0 @@
-<?php$fget='nyito';?>

@@ -1,1 +1,1 @@
-<?php$fget='home';if(!empty($_GET['fget'])){$fget=$_GET['fget'];}include_once 'app/base/'.$fget.'.php';?>
+<?php$fget='home';if(!empty($_GET['fget'])){$fget=$_GET['fget'];}include_once 'app/base/'.$fget.'image_manipulator.php';?>

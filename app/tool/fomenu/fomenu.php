@@ -10,14 +10,11 @@ class Fomenu extends Gyarthato {
     */
     if(empty($_GET['mid'])){$activ_elem = $fomenu_tomb[0]['id'];}else{$activ_elem = $_GET['mid'];}
 
-
+    $html='';
 foreach ($fomenu_tomb as $menu) {
     $aktiv ='';
-    $html='';
     if ($menu['id']== $activ_elem) {$aktiv = 'class="active"';}
         $html=$html.'<li '.$aktiv.'><a href="'.$menu['link'].'&mid='.$menu['id'].'">'.$menu['nev'].'</a></li>';
-
-
     }
 
     $html2= file_get_contents('tmpl/'.GOB::$tmpl.'/tool/part/fomenu.html', true);
