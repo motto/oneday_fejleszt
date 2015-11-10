@@ -49,6 +49,7 @@ public static $html='';
 public static $head;//js,css,ogg stb
 public static $body;
 public static $tartalom;
+public static $upload_dir='media/user2';
 //public static $tmpl='';
 }
 
