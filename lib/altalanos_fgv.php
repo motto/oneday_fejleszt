@@ -6,55 +6,7 @@ Link::kiszed(link,'task,id'); //ha a linkben nincs kérdőjel mögé tesz egy ?g
 Link::src_thumb($src)  //képnév elé illeszti a thumb/ -ot
 */
 
-class App
-{	public $alias;
-	public $param;
-	public $futtat='result';
-	public $result;
-	function __construct($param='')
-	{
-		$this->general($param);
 
-	}
-
-	public function update($param=array())
-
-	{
-
-		foreach ($param as $key => $value) {
-			$this->$key =$value;
-		}
-	}
-
-	public function general($param='')
-	{
-
-
-
-		if($param!='')
-		{
-			if(!is_array($param)){$param=STR::to_tomb($param);}
-			$this->alias=$param['alias'];
-			if(empty($this->alias)){$this->alias=get_class($this);}
-		}
-		if(is_array( GOB::$param[$this->alias]))
-		{
-			$this->update(GOB::$param[$this->alias]);
-		}
-		if(is_array($param))
-		{
-			$this->update($param);
-		}
-
-
-		//$futtat=$this->futtat;
-		//return $this->$futtat();
-	}
-	public function result()
-	{
-
-	}
-}
 class GYART{
 
 	static	function Obj($osztaly_nev,$param=''){
@@ -190,18 +142,7 @@ return $link2;
 
 
 }
-class HIBA {
-function tombbe($tip,$hiba)
-{
-global $hiba;
-$hiba[$tip][]=$hiba;
-}
-function beir($tip,$hiba)
-{
-global $hiba;
-$hiba[$tip][]=$hiba;
-}
-}
+
 
 
 	

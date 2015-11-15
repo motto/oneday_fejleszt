@@ -20,17 +20,20 @@ class GOB {
 	public static $title='Oneday club';
 	public static $app='home';
 	//public static $tartalom;
-	protected static $user=Array();
-	protected static $jog=Array();
-	protected static $admin_tomb=array(62);
-	protected static $szerzo_tomb=array(228);
-	protected static $moderator_tomb=array(247,228);
+	public static $user=Array();
+	public static $uerjog=Array();
+	protected static $get_uerjog='db'; // ha így marad adatbázisból olvassa ki a jogokat ha egy tombben definiáljuk pl.: GOB::$get_userjog['admin']=array(62); akkor onnan veszi ki
+	//public static $get_uerjog['admin']=array(62);
+	//protected static $szerzo_tomb=array(228);
+	//protected static $moderator_tomb=array(247,228);
 	static $hiba=array();
 	static $param=array();
 	public static function get_user($useradat='all'){
 		if($useradat=='all'){return self::$user;}else{return self::$user[$useradat];
 		}}
 }
+GOB::$get_userjog['admin']=array(62);
+GOB::$get_userjog['moderator']=array(62,228);
 // adatbázis elérés------------------------------------------------------
 include_once DB_FGV;  //adatbázis
 $db=DB::connect();
