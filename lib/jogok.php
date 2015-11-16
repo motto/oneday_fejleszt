@@ -3,33 +3,42 @@ defined( '_MOTTO' ) or die( 'Restricted access' );
 class Jog
 {
     public static function fromGOB(){
-       //adminjog beállítása------------
+
+        if(!empty($_SESSION['userid']))
+        {
+            GOB::$userjog['user']=true;
+            GOB::$userjog['grade']=10;
+
+        }
+
+        //szerzo jog beállítása-----------
+        if(in_array($_SESSION['userid'],GOB::$get_userjog['szerzo']))
+        {
+            GOB::$userjog['szerzo']=true;
+            GOB::$userjog['grade']=20;
+        }
+        //moderator jog beállítása-----------
+        if(in_array($_SESSION['userid'],GOB::$get_userjog['moderator']))
+        {
+            GOB::$userjog['moderator']=true;
+            GOB::$userjog['grade']=50;
+
+        }
+        //adminjog beállítása------------
        if(in_array($_SESSION['userid'],GOB::$get_userjog['admin']))
        {
          GOB::$userjog['admin']=true;
          GOB::$userjog['moderator']=true;
          GOB::$userjog['szerzo']=true;
-
+         GOB::$userjog['grade']=80;
             if(GOB::$admin_mod=='tulajdonos')
             {
              GOB::$userjog['tulajdonos']=true;
+                GOB::$userjog['grade']=90;
             }
        }
-        //moderator jog beállítása-----------
-        if(in_array($_SESSION['userid'],GOB::$get_userjog['moderator']))
-        {
-            GOB::$userjog['moderator']=true;
 
-        }
-        //szerzo jog beállítása-----------
-        if(in_array($_SESSION['userid'],GOB::$get_userjog['szerzo']))
-        {
-            GOB::$userjog['szerzo']=true;
-        }
-        if(!empty($_SESSION['userid']))
-        {
-            GOB::$userjog['user']=true;
-        }
+
     }
     public static function fromDB(){
 

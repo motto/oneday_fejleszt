@@ -6,7 +6,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 include_once 'definial.php';
 include_once 'lib/lang.php';
-include_once 'app/tool/tool.php';
+include_once 'app/modul/modul.php';
 if(MoConfig::$offline=='igen'){ //offline módban kikapcsolja a weblapot
 				if($jogok_gt['stat']!='admin'){die(MoConfig::$offline_message);
 				return false;

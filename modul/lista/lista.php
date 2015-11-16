@@ -18,7 +18,7 @@ class Lista_S {
     }
 
     /**
-     * listát állít eló a datatömmből, a tömb kulcs a tool név amit meghív, értéke a pramtömb amivel meghívja a tool-t a paramtömbben kell megadni a html-t pl: $datatomb['toolnév']=array('html'=>'','id'=>'2')
+     * listát állít eló a datatömmből, a tömb kulcs a modul név amit meghív, értéke a pramtömb amivel meghívja a modul-t a paramtömbben kell megadni a html-t pl: $datatomb['toolnév']=array('html'=>'','id'=>'2')
      * @param $data_tomb
      * @return string
      */

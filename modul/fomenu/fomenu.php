@@ -17,7 +17,7 @@ foreach ($fomenu_tomb as $menu) {
         $html=$html.'<li '.$aktiv.'><a href="'.$menu['link'].'&mid='.$menu['id'].'">'.$menu['nev'].'</a></li>';
     }
 
-    $html2= file_get_contents('tmpl/'.GOB::$tmpl.'/tool/part/fomenu.html', true);
+    $html2= file_get_contents('tmpl/'.GOB::$tmpl.'/modul/part/fomenu.html', true);
     $html2= str_replace('<!--|menu|-->',$html, $html2);
 
 
