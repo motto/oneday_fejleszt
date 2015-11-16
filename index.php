@@ -6,7 +6,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 include_once 'definial.php';
 include_once 'lib/lang.php';
-include_once 'app/modul/modul.php';
+include_once 'mod/mod.php';
+include_once 'app/app.php';
 if(MoConfig::$offline=='igen'){ //offline módban kikapcsolja a weblapot
 				if($jogok_gt['stat']!='admin'){die(MoConfig::$offline_message);
 				return false;
@@ -49,9 +50,10 @@ include_once ALTALANOS_FGV;
 class LAP{
 public static $html='';
 public static $head;//js,css,ogg stb
-public static $body;
-public static $tartalom;
+public static $bodyhead;//js,css stb
 public static $upload_dir='media/user2';
+//public static $body;
+//public static $tartalom;
 //public static $param=array();
 //public static $tmpl='';
 }

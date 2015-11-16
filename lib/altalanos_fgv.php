@@ -6,25 +6,6 @@ Link::kiszed(link,'task,id'); //ha a linkben nincs kérdőjel mögé tesz egy ?g
 Link::src_thumb($src)  //képnév elé illeszti a thumb/ -ot
 */
 
-
-class GYART{
-
-	static	function Obj($osztaly_nev,$param=''){
-		//$$osztaly=new $osztaly_nev;
-		$osztaly=new $osztaly_nev($param);
-		return $osztaly;
-	}
-
-	static	function result($osztaly_nev,$param='')
-	{
-		$oszt=self::Obj($osztaly_nev,$param);
-		$result=$oszt->result();
-		return $result;
-	}
-
-}
-
-
 function session_post_get($adatnev,$ertek){
 	if($_SESSION[$adatnev]!=null){$ertek=$_SESSION[$adatnev];}
 	if($_POST[$adatnev]!=null){$ertek=$_POST[$adatnev];}

@@ -1,7 +1,7 @@
 <?php
-class Head extends  Gyarthato{
-public function result(){
-$head_tomb=LAP::$head;
+class Head {
+public function result($head_tomb){
+if(empty($head_tomb)){$head_tomb=LAP::$head;}
 foreach( $head_tomb as $key=>$value_tomb){
     switch ($key) {
         case 'js_file':
@@ -35,10 +35,8 @@ foreach( $head_tomb as $key=>$value_tomb){
     }
 
     }
-    $html2= LAP::$head['html'];
-   $html2= str_replace('<!--|head|-->',$html, $html2);
-   $html2= str_replace('<!--|title|-->',GOB::$title, $html2);
 
-return $html2;
+
+return $html;
 }
 }

@@ -14,11 +14,11 @@ $slide_tomb[]=array('Tekintse meg bemutatkozó videónkat!','',$imagepath.'bg11.
 
             if(empty($slide[4]))
             {
-                $view = file_get_contents('app/modul/slide/view/slide_item.html', true);
+                $view = file_get_contents('app/mod/slide/view/slide_item.html', true);
             }
             else
             {
-                $view = file_get_contents('app/modul/slide/view/slide_video.html', true);
+                $view = file_get_contents('app/mod/slide/view/slide_video.html', true);
                 $view= str_replace('||videosrc||', $slide[4], $view);
             }
             if($a==1){ $view= str_replace('class="item"','class="item active"' , $view);}
@@ -30,7 +30,7 @@ $slide_tomb[]=array('Tekintse meg bemutatkozó videónkat!','',$imagepath.'bg11.
             $view = str_replace('||href||', $slide[3], $view);
             $html=$html.$view;
         }
-        $slide_view = file_get_contents('app/modul/slide/view/slide.html', true);
+        $slide_view = file_get_contents('app/mod/slide/view/slide.html', true);
         $slide_view = str_replace('||slide||', $html, $slide_view);
         return $slide_view;
     }
