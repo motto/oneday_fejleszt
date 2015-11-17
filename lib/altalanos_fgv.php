@@ -14,8 +14,7 @@ return $ertek;
 }
 class STR
 {
-	static public function to_tomb($string, $tagolo1 = ',', $tagolo2 = ':')
-	{
+	static public function to_tomb($string, $tagolo1 = ',', $tagolo2 = ':'){
 //pl.:$string='class:hhh,id:azon,name:név'
 		$tx1 = explode($tagolo1, $string);
 		foreach ($tx1 as $mezo) {
@@ -63,8 +62,6 @@ if($fugveny=''){return $$osztaly;}else{return $$osztaly->$fugveny();}
 }
 
 }
-
-
 //link kezelő-------------------------------------
 class LINK {
 // a kép neve elé teszi a /thumb-ot (thumb elérési útját állítja elő

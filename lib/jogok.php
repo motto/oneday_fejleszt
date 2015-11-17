@@ -3,7 +3,8 @@ defined( '_MOTTO' ) or die( 'Restricted access' );
 class Jog
 {
     public static function fromGOB(){
-
+$userid=$_SESSION['userid'];
+if(empty($userid)or $userid==0){$userid='noname';}
         if(!empty($_SESSION['userid']))
         {
             GOB::$userjog['user']=true;
@@ -12,20 +13,20 @@ class Jog
         }
 
         //szerzo jog beállítása-----------
-        if(in_array($_SESSION['userid'],GOB::$get_userjog['szerzo']))
+        if(is_array(GOB::$get_userjog['szerzo'])&& in_array($userid,GOB::$get_userjog['szerzo']))
         {
             GOB::$userjog['szerzo']=true;
             GOB::$userjog['grade']=20;
         }
         //moderator jog beállítása-----------
-        if(in_array($_SESSION['userid'],GOB::$get_userjog['moderator']))
+        if(is_array(GOB::$get_userjog['moderator'])&& in_array($userid,GOB::$get_userjog['moderator']))
         {
             GOB::$userjog['moderator']=true;
             GOB::$userjog['grade']=50;
 
         }
         //adminjog beállítása------------
-       if(in_array($_SESSION['userid'],GOB::$get_userjog['admin']))
+       if(is_array(GOB::$get_userjog['admin'])&& in_array($userid,GOB::$get_userjog['admin']))
        {
          GOB::$userjog['admin']=true;
          GOB::$userjog['moderator']=true;

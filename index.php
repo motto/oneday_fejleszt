@@ -1,13 +1,15 @@
 <?php
 session_start();
-
+// TODO: altalanos fügvények becsatolása után meghal
 // GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}    új mappa és erre átnevezni
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 include_once 'definial.php';
+
 include_once 'lib/lang.php';
-include_once 'mod/mod.php';
-include_once 'app/app.php';
+//include_once 'mod/mod.php';
+include_once 'lib/factory.php';
+include_once 'lib/jogok.php';
 if(MoConfig::$offline=='igen'){ //offline módban kikapcsolja a weblapot
 				if($jogok_gt['stat']!='admin'){die(MoConfig::$offline_message);
 				return false;
@@ -33,7 +35,7 @@ class GOB {
 //userjogok beálítása ha nem a Jog::fromDB()-t használjuk
 GOB::$get_userjog['admin']=array(62);
 GOB::$get_userjog['moderator']=array(62,228);
-GOB::$uerjog=Jog::fromGOB();
+GOB::$userjog=Jog::fromGOB();
 // adatbázis elérés------------------------------------------------------
 include_once DB_FGV;  //adatbázis
 $db=DB::connect();
@@ -44,7 +46,7 @@ $azonosit= new Azonosit; //session-be írja az useridet vagy nullát
 
 //$_SESSION['userid']=62;
 include_once ALTALANOS_FGV;
-
+echo 'hhhhhhhhhhhhhhhhhhh';
 //tartalom előállítás--------------------------------------
 
 class LAP{
@@ -63,7 +65,7 @@ GOB::$app=session_post_get('app',GOB::$app);
 include_once 'app/'.GOB::$app.'/'.GOB::$app.'.php';
 
 
-echo LAP::$html;
+echo 'hhhhhhhhhhhhhhhhhhh'.LAP::$html;
 
 ?>
 
