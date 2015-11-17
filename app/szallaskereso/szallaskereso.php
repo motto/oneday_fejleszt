@@ -1,5 +1,5 @@
 <?php
-//include_once 'app/mod/item/item.php';
+//include_once 'app/mod/modul/modul.php';
 /**
  * megjeleníti a száloda listát
  */
@@ -14,7 +14,7 @@ class Szallaskereso{
             $query = "SELECT sz.Af_id,sz.Af_nev,sz.Af_orszag,sz.Af_telepules,COALESCE(GROUP_CONCAT(f.Foto_id SEPARATOR ', '),'nincs') AS fotok,v.Af_varosNev FROM odc_szallas sz INNER JOIN  odc_fotok f ON (sz.Af_id=f.Fokep) INNER JOIN odc_varosok v ON (v.Af_varosID=sz.Af_telepules) WHERE sz.AF_orszag='".$o."' AND sz.AF_aktiv='I' GROUP BY sz.Af_id LIMIT 10";
             $data_tomb=DB::assoc_tomb($query);
             //print_r($data_tomb);
-            $tartalom_item=file_get_contents('tmpl/'.GOB::$tmpl.'/mod/item/szallas.html', true);
+            $tartalom_item=file_get_contents('tmpl/'.GOB::$tmpl.'/mod/modul/szallas.html', true);
             $item_lista=TOOL::lista($tartalom_item,$data_tomb);
 
  //Város vállasztó gombok előállítása-----------

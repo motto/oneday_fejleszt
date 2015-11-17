@@ -19,7 +19,7 @@ class GOB {
 	//public static $tmpl=Array('alap'=>'alap'); //alap template
 	public static $tmpl='oneday';
 	public static $title='Oneday club';
-	public static $app='home';
+	public static $app='base';
 	//public static $tartalom;
 	public static $user=Array();
 	public static $userjog=Array();

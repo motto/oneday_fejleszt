@@ -19,23 +19,23 @@ class MOD{
     }
 
     static  public function kereso($html,$data){
-        include_once 'mod/item/item.php';
+        include_once 'mod/modul/modul.php';
         return Item_S::view($html,$data);
     }
     static  public function ads($html,$data){
-        include_once 'mod/item/item.php';
+        include_once 'mod/modul/modul.php';
         return Item_S::view($html,$data);
     }
     static  public function item_s($html,$data){
-        include_once 'mod/item/item.php';
+        include_once 'mod/modul/modul.php';
         return Item_S::view($html,$data);
     }
     static  public function item($param){
-        include_once 'mod/item/item.php';
+        include_once 'mod/modul/modul.php';
         return GYART::result('Item',$param);
     }
     static  public function item_query($param){
-        include_once 'mod/item/item.php';
+        include_once 'mod/modul/modul.php';
         return GYART::result('ItemQuery',$param);
     }
 static  public function fomenu($param=array()){

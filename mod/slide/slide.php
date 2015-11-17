@@ -21,7 +21,7 @@ $slide_tomb[]=array('Tekintse meg bemutatkozó videónkat!','',$imagepath.'bg11.
                 $view = file_get_contents('app/mod/slide/view/slide_video.html', true);
                 $view= str_replace('||videosrc||', $slide[4], $view);
             }
-            if($a==1){ $view= str_replace('class="item"','class="item active"' , $view);}
+            if($a==1){ $view= str_replace('class="modul"','class="modul active"' , $view);}
             $a++;
 
             $view= str_replace('||szoveg1||', $slide[0], $view);

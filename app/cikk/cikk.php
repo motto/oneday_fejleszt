@@ -1,5 +1,5 @@
 <?php
-include_once 'app/mod/item/item.php';
+include_once 'app/mod/modul/modul.php';
 class Cikk{
 //static  public $data=array();
     public static function view(){
