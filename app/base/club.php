@@ -11,4 +11,4 @@ class Club{
     }
 }
 //echo 'hgbkehgkejhgekjgkhehkehkkj';Lap::$html= Scroll::view();
-Lap::$html=Club::view();
+GOB::$html=Club::view();

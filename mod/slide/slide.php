@@ -1,5 +1,5 @@
 <?php
-class Slide extends Gyarthato{
+class Slide {
 
 public function result(){
 $imagepath='tmpl/oneday/images/slider/'; //bg2.jpg
@@ -14,11 +14,12 @@ $slide_tomb[]=array('Tekintse meg bemutatkozó videónkat!','',$imagepath.'bg11.
 
             if(empty($slide[4]))
             {
-                $view = file_get_contents('app/mod/slide/view/slide_item.html', true);
+                $view = file_get_contents('mod/slide/view/slide_item.html', true);
+                if($a==1){$view= str_replace('<!--active-->', 'active', $view);}
             }
             else
             {
-                $view = file_get_contents('app/mod/slide/view/slide_video.html', true);
+                $view = file_get_contents('mod/slide/view/slide_video.html', true);
                 $view= str_replace('||videosrc||', $slide[4], $view);
             }
             if($a==1){ $view= str_replace('class="modul"','class="modul active"' , $view);}
@@ -29,8 +30,9 @@ $slide_tomb[]=array('Tekintse meg bemutatkozó videónkat!','',$imagepath.'bg11.
             $view = str_replace('||image||', $slide[2], $view);
             $view = str_replace('||href||', $slide[3], $view);
             $html=$html.$view;
+            $a++;
         }
-        $slide_view = file_get_contents('app/mod/slide/view/slide.html', true);
+        $slide_view = file_get_contents('mod/slide/view/slide.html', true);
         $slide_view = str_replace('||slide||', $html, $slide_view);
         return $slide_view;
     }

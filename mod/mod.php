@@ -38,20 +38,23 @@ class MOD{
         include_once 'mod/modul/modul.php';
         return GYART::result('ItemQuery',$param);
     }
-static  public function fomenu($param=array()){
+static  public function fomenu(){
         include_once 'mod/fomenu/fomenu.php';
- return GYART::result('Fomenu');
+    $fomenu=new Fomenu();
+    return $fomenu->result();
 }
 
 //head lista ---------------------
-static  public function head($tomb=''){
+static  public function head($tomb=array()){
         include_once 'mod/head/head.php';
     $head=new Head();
     return $head->result($tomb);
 }
 static  public function slide($param=array()){
  include_once 'mod/slide/slide.php';
- return GYART::result('Slide');
+    $slide =new Slide();
+
+ return $slide->result();
 }
     static  public function scrol($param=array()){
         include_once 'mod/scroll/scroll.php';

@@ -15,5 +15,5 @@ class Home{
         return $html;
     }
 }
-LAP::$html= HOME::view();
+GOB::$html= HOME::view();
 ?>

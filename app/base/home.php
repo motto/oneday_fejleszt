@@ -10,4 +10,4 @@ $html = str_replace('<!--|tartalom|-->',Tool_S::view('Slide') ,$html);
 return $html;
 }
 }
-Lap::$html= Home::view();
+GOB::$html= Home::view();

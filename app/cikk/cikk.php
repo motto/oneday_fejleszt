@@ -17,5 +17,5 @@ class Cikk{
         return $html;
     }
 }
-LAP::$html= Cikk::view();
+GOB::$html= Cikk::view();
 ?>

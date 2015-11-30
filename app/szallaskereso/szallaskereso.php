@@ -45,5 +45,5 @@ class Szallaskereso{
         return $html;
     }
 }
-LAP::$html= Szallaskereso::view();
+GOB::$html= Szallaskereso::view();
 ?>

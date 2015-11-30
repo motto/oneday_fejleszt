@@ -31,7 +31,7 @@ else{
         }
     }
 //echo 'hgbkehgkejhgekjgkhehkehkkj';Lap::$html= Scroll::view();
-    Lap::$html=ClubAdmin::view();
+    GOB::$html=ClubAdmin::view();
 
 
 

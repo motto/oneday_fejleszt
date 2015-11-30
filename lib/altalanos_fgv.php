@@ -12,6 +12,15 @@ function session_post_get($adatnev,$ertek){
 	if($_GET[$adatnev]!=null){$ertek=$_GET[$adatnev];}
 return $ertek;
 }
+function unit_to_GOB(){
+	$html = file_get_contents('tmpl/'.GOB::$tmpl.'/unit.html', true);
+$unittomb=explode('<!--*|',$html);
+	foreach ( $unittomb as $unit){
+		$tomb=explode('|*-->',$unit);
+		GOB::$html_part[$tomb[0]]=$tomb[1];
+	}
+}
+
 class STR
 {
 	static public function to_tomb($string, $tagolo1 = ',', $tagolo2 = ':'){
@@ -35,6 +44,7 @@ static public function webnev($string,$hosz=20)
 		return $webnev;
 	}
 }
+
 class TOMB {
 static public function to_string($tomb){
 foreach($tomb as $key=>$value){
@@ -47,24 +57,16 @@ static public function kiir($tomb){
 }
 }
 
-//osztályok létrehozását könnítő függvények-------------------------------
-class Obj{
-//pl.:$param='class:hhh,id:azon,name:név' Obj::gyors($osztaly,$param,'megjelenit')
-function gyors($osztaly,$param,$fugveny='',$tagolo1=',',$tagolo2=':') //stringből tölti fel az osztály változókat
-{
-$$osztaly=new $osztaly;
-if(is_array($param)){$param2=$param;}else{
-$param2=Tomb::char_to_assoc($param,$tagolo1,$tagolo2);
-}
-foreach($param as $kulcs => $ertek){$$osztaly->$kulcs=$ertek;}
-//ha van függvény azzal hanincs az objektummal tér vissza
-if($fugveny=''){return $$osztaly;}else{return $$osztaly->$fugveny();}
-}
-
-}
-//link kezelő-------------------------------------
+/**
+ * link kezelő
+ *
+ */
 class LINK {
-// a kép neve elé teszi a /thumb-ot (thumb elérési útját állítja elő
+	/**
+	 * a kép neve elé teszi a /thumb-ot (thumb elérési útját állítja elő
+	 * @param $src
+	 * @return string
+	 */
 static public function thumb_src($src)
 { 
 ///$path_parts = pathinfo('/www/htdocs/inc/lib.inc.php');
@@ -114,11 +116,6 @@ if (strpos($link,'?') === false){$link2=$link2.'?'.$cserel;}else{$link2=$link2.'
 //echo $link2;
 return $link2; 
 }
-
-
-
-
-
 }
 
 
